@@ -1,0 +1,101 @@
+PODS:
+  - Alamofire (4.7.2)
+  - CocoaAsyncSocket (7.6.3)
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
+    - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (3.4.2):
+    - CocoaLumberjack/Default
+  - ESTabBarController-swift (2.6.2)
+  - Eureka (4.1.1)
+  - Kingfisher (4.7.0)
+  - Moya (10.0.0):
+    - Moya/Core (= 10.0.0)
+  - Moya/Core (10.0.0):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (10.0.0):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - PaperTrailLumberjack/Core (0.1.8):
+    - CocoaAsyncSocket (~> 7.5)
+    - CocoaLumberjack (~> 3.0)
+  - PaperTrailLumberjack/Swift (0.1.8):
+    - CocoaLumberjack/Swift (~> 3.0)
+    - PaperTrailLumberjack/Core
+  - PKHUD (5.0.0)
+  - ReachabilitySwift (4.1.0)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
+  - Result (3.2.4)
+  - RxSwift (4.1.2)
+  - SCLAlertView (0.8)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.1.0)
+  - SwiftyUserDefaults (3.0.1)
+
+DEPENDENCIES:
+  - ESTabBarController-swift
+  - Eureka
+  - Kingfisher (~> 4.0)
+  - Moya (~> 10.0)
+  - Moya/RxSwift (= 10.0)
+  - PaperTrailLumberjack/Swift
+  - PKHUD (~> 5.0)
+  - ReachabilitySwift
+  - RealmSwift
+  - SCLAlertView
+  - SnapKit (~> 4.0.0)
+  - SwiftyJSON
+  - SwiftyUserDefaults
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+    - ESTabBarController-swift
+    - Eureka
+    - Kingfisher
+    - Moya
+    - PaperTrailLumberjack
+    - PKHUD
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
+    - Result
+    - RxSwift
+    - SCLAlertView
+    - SnapKit
+    - SwiftyJSON
+    - SwiftyUserDefaults
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
+  PaperTrailLumberjack: afd1a729641ebb2e10975db30a5f8ebc890cccd6
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+
+PODFILE CHECKSUM: b77e86bcff403a6d149097f630f45d9a08a0abc4
+
+COCOAPODS: 1.5.0
