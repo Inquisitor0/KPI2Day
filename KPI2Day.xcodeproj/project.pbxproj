@@ -35,6 +35,12 @@
 		842B6C2820BF05910022AB36 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C0F20BF05910022AB36 /* RealmService.swift */; };
 		842B6C2920BF05910022AB36 /* AppDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C1020BF05910022AB36 /* AppDataManager.swift */; };
 		842B6C2B20BF07AC0022AB36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C2A20BF07AB0022AB36 /* AppDelegate.swift */; };
+		842B6C3020C1BB390022AB36 /* VendorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C2F20C1BB390022AB36 /* VendorService.swift */; };
+		842B6C3320C1BBDF0022AB36 /* TeacherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3220C1BBDF0022AB36 /* TeacherVC.swift */; };
+		842B6C3520C1BC3C0022AB36 /* TeacherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3420C1BC3C0022AB36 /* TeacherView.swift */; };
+		842B6C3820C1BD4D0022AB36 /* LessonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3720C1BD4D0022AB36 /* LessonVC.swift */; };
+		842B6C3A20C1BD870022AB36 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3920C1BD870022AB36 /* LessonView.swift */; };
+		842B6C3E20C1CB3F0022AB36 /* ServerKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842B6C3D20C1CB3F0022AB36 /* ServerKeys.plist */; };
 		93FAA92B57B7B9534E1DE598 /* Pods_KPI2Day.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858C35E91CA1476DC162D27D /* Pods_KPI2Day.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +76,12 @@
 		842B6C0F20BF05910022AB36 /* RealmService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		842B6C1020BF05910022AB36 /* AppDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataManager.swift; sourceTree = "<group>"; };
 		842B6C2A20BF07AB0022AB36 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		842B6C2F20C1BB390022AB36 /* VendorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorService.swift; sourceTree = "<group>"; };
+		842B6C3220C1BBDF0022AB36 /* TeacherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherVC.swift; sourceTree = "<group>"; };
+		842B6C3420C1BC3C0022AB36 /* TeacherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherView.swift; sourceTree = "<group>"; };
+		842B6C3720C1BD4D0022AB36 /* LessonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonVC.swift; sourceTree = "<group>"; };
+		842B6C3920C1BD870022AB36 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
+		842B6C3D20C1CB3F0022AB36 /* ServerKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ServerKeys.plist; sourceTree = "<group>"; };
 		858C35E91CA1476DC162D27D /* Pods_KPI2Day.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPI2Day.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92066B4A7EC5AADC0314D6BA /* Pods-KPI2Day.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPI2Day.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPI2Day/Pods-KPI2Day.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +148,8 @@
 		842B6BEA20BF05910022AB36 /* User Story */ = {
 			isa = PBXGroup;
 			children = (
+				842B6C3620C1BD3F0022AB36 /* Lesson's Page */,
+				842B6C3120C1BBC60022AB36 /* Teacher's Page */,
 				842B6BEB20BF05910022AB36 /* Settings */,
 				842B6BED20BF05910022AB36 /* Schedule */,
 				842B6BF120BF05910022AB36 /* Start */,
@@ -236,6 +250,7 @@
 				842B6C0C20BF05910022AB36 /* Alert Presenter */,
 				842B6C0E20BF05910022AB36 /* Realm Service */,
 				842B6C1020BF05910022AB36 /* AppDataManager.swift */,
+				842B6C2F20C1BB390022AB36 /* VendorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -271,6 +286,7 @@
 			children = (
 				842B6C2E20BF080D0022AB36 /* Bundle */,
 				842B6C2A20BF07AB0022AB36 /* AppDelegate.swift */,
+				842B6C3D20C1CB3F0022AB36 /* ServerKeys.plist */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -285,6 +301,24 @@
 			name = Bundle;
 			sourceTree = "<group>";
 		};
+		842B6C3120C1BBC60022AB36 /* Teacher's Page */ = {
+			isa = PBXGroup;
+			children = (
+				842B6C3220C1BBDF0022AB36 /* TeacherVC.swift */,
+				842B6C3420C1BC3C0022AB36 /* TeacherView.swift */,
+			);
+			path = "Teacher's Page";
+			sourceTree = "<group>";
+		};
+		842B6C3620C1BD3F0022AB36 /* Lesson's Page */ = {
+			isa = PBXGroup;
+			children = (
+				842B6C3720C1BD4D0022AB36 /* LessonVC.swift */,
+				842B6C3920C1BD870022AB36 /* LessonView.swift */,
+			);
+			path = "Lesson's Page";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -297,6 +331,7 @@
 				842B6BCA20BF03BE0022AB36 /* Frameworks */,
 				842B6BCB20BF03BE0022AB36 /* Resources */,
 				68E3DEB6C53A28AF776FE08A /* [CP] Embed Pods Frameworks */,
+				EBE6C416A0BE46C64BCBD07F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842B6BDB20BF03C00022AB36 /* LaunchScreen.storyboard in Resources */,
+				842B6C3E20C1CB3F0022AB36 /* ServerKeys.plist in Resources */,
 				842B6BD820BF03C00022AB36 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +459,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EBE6C416A0BE46C64BCBD07F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KPI2Day/Pods-KPI2Day-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KPI2Day/Pods-KPI2Day-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -434,6 +488,8 @@
 				842B6C2620BF05910022AB36 /* NetworkLoggingPlugin.swift in Sources */,
 				842B6C2120BF05910022AB36 /* DefaultKeys+Ext.swift in Sources */,
 				842B6C1520BF05910022AB36 /* StartVC.swift in Sources */,
+				842B6C3820C1BD4D0022AB36 /* LessonVC.swift in Sources */,
+				842B6C3A20C1BD870022AB36 /* LessonView.swift in Sources */,
 				842B6C2320BF05910022AB36 /* AppRouter.swift in Sources */,
 				842B6C1120BF05910022AB36 /* SettingsVC.swift in Sources */,
 				842B6C1E20BF05910022AB36 /* Room.swift in Sources */,
@@ -446,14 +502,17 @@
 				842B6C1D20BF05910022AB36 /* Teacher.swift in Sources */,
 				842B6C1320BF05910022AB36 /* LessonTableViewCell.swift in Sources */,
 				842B6C2420BF05910022AB36 /* OnlineProvider.swift in Sources */,
+				842B6C3520C1BC3C0022AB36 /* TeacherView.swift in Sources */,
 				842B6C1620BF05910022AB36 /* SelectGroupView.swift in Sources */,
 				842B6C2720BF05910022AB36 /* AlertPresenter.swift in Sources */,
 				842B6C1A20BF05910022AB36 /* Lesson.swift in Sources */,
+				842B6C3320C1BBDF0022AB36 /* TeacherVC.swift in Sources */,
 				842B6C1720BF05910022AB36 /* SelectGroupVC.swift in Sources */,
 				842B6C2020BF05910022AB36 /* ESTabBarController+Ext.swift in Sources */,
 				842B6C1820BF05910022AB36 /* SelectGroupVM.swift in Sources */,
 				842B6C1420BF05910022AB36 /* ScheduleVM.swift in Sources */,
 				842B6C1C20BF05910022AB36 /* Enums.swift in Sources */,
+				842B6C3020C1BB390022AB36 /* VendorService.swift in Sources */,
 				842B6C1920BF05910022AB36 /* Constants.swift in Sources */,
 				842B6C2920BF05910022AB36 /* AppDataManager.swift in Sources */,
 			);

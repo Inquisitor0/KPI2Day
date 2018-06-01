@@ -17,7 +17,8 @@ target 'KPI2Day' do
     # Common
     pod 'ReachabilitySwift'
     pod 'SwiftyUserDefaults'
-    
+    pod 'GoogleMaps'
+
     # Networking
     pod 'SwiftyJSON'
     pod 'PaperTrailLumberjack/Swift'

@@ -103,13 +103,16 @@ extension ScheduleVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        showLessonDetails()
+        
+        guard let lessonsArray = viewModel.lessons(forWeek: currentWeekIndex)[indexPath.section + 1] else { return }
+        let lesson = lessonsArray[indexPath.row]
+        
+        showLessonDetails(lesson: lesson)
     }
     
-    private func showLessonDetails() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .white
-        navigationController?.pushViewController(viewController, animated: true)
+    private func showLessonDetails(lesson: Lesson) {
+        let lessonVC = LessonVC(lesson: lesson)
+        navigationController?.pushViewController(lessonVC, animated: true)
     }
     
     private func scheduleCellViewModel(lesson: Lesson, index: Int) -> LessonTableCellViewModel {
