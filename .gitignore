@@ -18,6 +18,8 @@ DerivedData
 *.xcuserstate
 .DS_Store
 
+KPI2Day/ServerKeys.plist
+ServerKeys.plist
 #markdown files
 #*.md
 
