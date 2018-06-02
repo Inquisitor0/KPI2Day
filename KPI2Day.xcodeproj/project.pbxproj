@@ -40,7 +40,7 @@
 		842B6C3520C1BC3C0022AB36 /* TeacherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3420C1BC3C0022AB36 /* TeacherView.swift */; };
 		842B6C3820C1BD4D0022AB36 /* LessonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3720C1BD4D0022AB36 /* LessonVC.swift */; };
 		842B6C3A20C1BD870022AB36 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3920C1BD870022AB36 /* LessonView.swift */; };
-		842B6C3E20C1CB3F0022AB36 /* ServerKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842B6C3D20C1CB3F0022AB36 /* ServerKeys.plist */; };
+		842B6C4220C2895E0022AB36 /* configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842B6C4120C2895E0022AB36 /* configs.plist */; };
 		93FAA92B57B7B9534E1DE598 /* Pods_KPI2Day.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858C35E91CA1476DC162D27D /* Pods_KPI2Day.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +81,7 @@
 		842B6C3420C1BC3C0022AB36 /* TeacherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherView.swift; sourceTree = "<group>"; };
 		842B6C3720C1BD4D0022AB36 /* LessonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonVC.swift; sourceTree = "<group>"; };
 		842B6C3920C1BD870022AB36 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
-		842B6C3D20C1CB3F0022AB36 /* ServerKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ServerKeys.plist; sourceTree = "<group>"; };
+		842B6C4120C2895E0022AB36 /* configs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = configs.plist; sourceTree = "<group>"; };
 		858C35E91CA1476DC162D27D /* Pods_KPI2Day.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPI2Day.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92066B4A7EC5AADC0314D6BA /* Pods-KPI2Day.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPI2Day.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPI2Day/Pods-KPI2Day.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,7 +286,7 @@
 			children = (
 				842B6C2E20BF080D0022AB36 /* Bundle */,
 				842B6C2A20BF07AB0022AB36 /* AppDelegate.swift */,
-				842B6C3D20C1CB3F0022AB36 /* ServerKeys.plist */,
+				842B6C4120C2895E0022AB36 /* configs.plist */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -380,8 +380,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842B6C4220C2895E0022AB36 /* configs.plist in Resources */,
 				842B6BDB20BF03C00022AB36 /* LaunchScreen.storyboard in Resources */,
-				842B6C3E20C1CB3F0022AB36 /* ServerKeys.plist in Resources */,
 				842B6BD820BF03C00022AB36 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

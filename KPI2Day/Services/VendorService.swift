@@ -19,7 +19,7 @@ class VendorService {
         var googleMapsAPIKey = ""
         var myDict: NSDictionary?
         
-        if let path = Bundle.main.path(forResource: "ServerKeys", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "configs", ofType: "plist") {
             myDict = NSDictionary(contentsOfFile: path)
         }
         if let dict = myDict, let apiKey = dict["googleAPIKey"] as? String {
