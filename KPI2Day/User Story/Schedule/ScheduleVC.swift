@@ -10,9 +10,32 @@ import UIKit
 import PKHUD
 import SnapKit
 
+enum ScheduleType {
+    case group(id: String)
+    case teacher(id: String)
+    
+    var targetId: String {
+        switch self {
+        case .group(let groupId):
+            return groupId
+        case .teacher(let teacherid):
+            return teacherid
+        }
+    }
+    
+    var shouldUseRealmStorage: Bool {
+        switch self {
+        case .group:
+            return true
+        case .teacher:
+            return false
+        }
+    }
+}
+
 class ScheduleVC: UIViewController {
 
-    private let viewModel = ScheduleVM()
+    private let viewModel: ScheduleVM
     private let tableView = UITableView()
     private let weekSwitcher = UISegmentedControl()
     
@@ -20,6 +43,15 @@ class ScheduleVC: UIViewController {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    init(type: ScheduleType) {
+        viewModel = ScheduleVM(type: type)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -40,9 +72,8 @@ class ScheduleVC: UIViewController {
     }
     
     func loadSchedule() {
-        guard let groupId = AppDataManager.shared.currentGroupId.value else { return }
         HUD.show(.progress)
-        viewModel.loadFullSchedule(groupId: groupId)
+        viewModel.loadFullSchedule()
     }
     
     private func setupNavBar() {
@@ -134,6 +165,7 @@ extension ScheduleVC: ScheduleVMDelegate {
     }
     
     func didRecieveError(error: Error) {
+        HUD.hide()
         AlertPresenter.showErrorAlert(title: error.localizedDescription)
     }
 }

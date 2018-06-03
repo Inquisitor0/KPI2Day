@@ -17,6 +17,8 @@ enum AppNetworkService {
     case loadSchedule(groupId: String)
     case loadFullSchedule(groupId: String)
     
+    case loadTeacherSchedule(teacherId: String)
+    
     case loadGroup(name: String)
 }
 
@@ -63,6 +65,8 @@ extension AppNetworkService: TargetType {
             return "lessons"
         case .loadFullSchedule(let groupId):
             return "groups/\(groupId)/timetable/"
+        case .loadTeacherSchedule(let teacherId):
+            return "teachers/\(teacherId)/timetable/"
         case .loadGroup:
             return "groups"
         }

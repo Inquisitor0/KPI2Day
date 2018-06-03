@@ -68,10 +68,10 @@ class TabbarItemView: ESTabBarItemContentView {
 
 extension ESTabBarController {
 
-    static func defaultStudentTabBar() -> ESTabBarController {
+    static func defaultStudentTabBar(groupId: String) -> ESTabBarController {
         
         let tabBarController = ESTabBarController()
-        let v1 = UINavigationController(rootViewController: ScheduleVC()) // Schedule
+        let v1 = UINavigationController(rootViewController: ScheduleVC(type: .group(id: groupId))) // Schedule
         let v2 = UINavigationController(rootViewController: SettingsVC()) // Settings
         
         let scheduleImage = #imageLiteral(resourceName: "schedule_icon")

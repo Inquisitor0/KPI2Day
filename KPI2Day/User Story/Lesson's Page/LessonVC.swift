@@ -38,7 +38,7 @@ class LessonVC: UIViewController {
 extension LessonVC: LessonViewDelegate {
     func didPressTeacherButton() {
         guard let teacher = lesson.teachers.first else { return }
-        let teacherVC = TeacherVC(teacher: teacher)
-        navigationController?.pushViewController(teacherVC, animated: true)
+        let scheduleVC = ScheduleVC(type: .teacher(id: String(teacher.id)))
+        navigationController?.pushViewController(scheduleVC, animated: true)
     }
 }

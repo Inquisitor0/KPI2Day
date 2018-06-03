@@ -25,6 +25,8 @@ class ScheduleVM {
     
     weak var delegate: ScheduleVMDelegate?
     
+    let scheduleType: ScheduleType
+    
     private let bag = DisposeBag()
     private let provider = OnlineProvider<AppNetworkService>()
     
@@ -39,11 +41,16 @@ class ScheduleVM {
         return index == 0 ? firstWeekLessons : secondWeekLessons
     }
     
-    init() {
-        lessons = realm.objects(Lesson.self)
-        observeSchedule()
+    init(type: ScheduleType) {
+        self.scheduleType = type
+        
+        if type.shouldUseRealmStorage {
+            lessons = realm.objects(Lesson.self)
+            observeSchedule()
+        }
     }
     
+    // Fetch from Realm
     private func observeSchedule() {
         token = lessons?.observe({ [unowned self] (change) in
             self.setupSchedule()
@@ -56,25 +63,19 @@ class ScheduleVM {
         })
     }
     
-    private func observeRealmErrors() {
-        RealmService.errors.asObservable()
-        .subscribe(onNext: { [unowned self] (realmError) in
-            guard let error = realmError else { return }
-            self.delegate?.didRecieveError(error: error)
-        })
-        .disposed(by: bag)
-    }
-    
-    func loadFullSchedule(groupId: String) {
-        
-        guard lessons != nil, !lessons.isEmpty else {
-            self.downloadSchedule(groupId: groupId)
-            return
+    func loadFullSchedule() {
+        if scheduleType.shouldUseRealmStorage {
+            guard lessons != nil, !lessons.isEmpty else {
+                downloadSchedule()
+                return
+            }
+        } else {
+            downloadSchedule()
         }
     }
     
-    private func downloadSchedule(groupId: String) {
-        self.provider.request(.loadFullSchedule(groupId: groupId))
+    private func downloadSchedule() {
+        downloadScheduleSignal()
             .subscribe(onSuccess: { [unowned self] response in
                 self.setupLessonsDictionaries(response)
             }) { error in
@@ -83,6 +84,15 @@ class ScheduleVM {
                 }
             }
             .disposed(by: self.bag)
+    }
+    
+    private func downloadScheduleSignal() -> PrimitiveSequence<SingleTrait, Any> {
+        switch scheduleType {
+        case .group(let id):
+            return provider.request(.loadFullSchedule(groupId: id))
+        case .teacher(let id):
+            return provider.request(.loadTeacherSchedule(teacherId: id))
+        }
     }
     
     private func setupSchedule() {
@@ -129,15 +139,35 @@ class ScheduleVM {
                 for (_, lessonJSON) in lessonsDict {
                     
                     let lesson = Lesson(json: lessonJSON, day: dayIndex, week: weekIndex)
-                    lessons.append(lesson)
+                    if scheduleType.shouldUseRealmStorage {
+                        lessons.append(lesson)
+                    } else {
+                        addLesson(lesson: lesson, week: weekIndex, day: dayIndex)
+                    }
                 }
             }
         }
         
-        saveLessonsLocally(lessons: lessons)
+        if scheduleType.shouldUseRealmStorage {
+            saveLessonsLocally(lessons: lessons)
+        } else {
+            DispatchQueue.main.async { [unowned self] in
+                self.delegate?.didUpdateSchedule()
+            }
+        }
     }
     
     private func saveLessonsLocally(lessons: [Lesson]) {
         AppDataManager.shared.saveLessons(lessons)
+    }
+    
+    private func observeRealmErrors() {
+        RealmService.errors.asObservable()
+            .subscribe(onNext: { [unowned self] (realmError) in
+                guard let error = realmError else { return }
+                self.delegate?.didRecieveError(error: error)
+                DDLogError(error.localizedDescription)
+            })
+            .disposed(by: bag)
     }
 }

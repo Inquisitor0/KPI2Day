@@ -34,7 +34,8 @@ class AppRouter {
     }
 
     private static func showStudentTabBar() {
-        let mainTabBar = ESTabBarController.defaultStudentTabBar()
+        guard let groupId = AppDataManager.shared.currentGroupId.value else { showGroupSelection(); return; }
+        let mainTabBar = ESTabBarController.defaultStudentTabBar(groupId: groupId)
         let window = UIApplication.shared.keyWindow
         window?.rootViewController = mainTabBar
     }
