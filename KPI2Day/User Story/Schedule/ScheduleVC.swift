@@ -9,17 +9,18 @@
 import UIKit
 import PKHUD
 import SnapKit
+import RxSwift
 
 enum ScheduleType {
     case group(id: String)
-    case teacher(id: String)
+    case teacher(id: Int)
     
     var targetId: String {
         switch self {
         case .group(let groupId):
             return groupId
         case .teacher(let teacherid):
-            return teacherid
+            return "\(teacherid)"
         }
     }
     
@@ -38,6 +39,8 @@ class ScheduleVC: UIViewController {
     private let viewModel: ScheduleVM
     private let tableView = UITableView()
     private let weekSwitcher = UISegmentedControl()
+    
+    private let bag = DisposeBag()
     
     private var currentWeekIndex = 0 {
         didSet {
@@ -72,8 +75,14 @@ class ScheduleVC: UIViewController {
     }
     
     func loadSchedule() {
-        HUD.show(.progress)
-        viewModel.loadFullSchedule()
+        viewModel.data.asObservable()
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [unowned self] (data) in
+                self.tableView.reloadData()
+            })
+        .disposed(by: bag)
+//        HUD.show(.progress)
+//        viewModel.loadFullSchedule()
     }
     
     private func setupNavBar() {

@@ -15,12 +15,22 @@ class RealmService {
     static let queue = DispatchQueue(label: "realm_queue", qos: .background)
     static var errors = Variable<Error?>(nil)
     
-    static func save<T: Object>(_ objects: [T]) {
-        
-        queue.async {
+    static func fetchLessons(_ completion: @escaping (Results<Lesson>) -> Void) {
+        DispatchQueue.main.async {
             
             let realm = try! Realm()
             
+            let lessons = realm.objects(Lesson.self)
+            completion(lessons)
+        }
+    }
+    
+    static func save<T: Object>(_ objects: [T]) {
+        
+        queue.async {
+
+            let realm = try! Realm()
+
             do {
                 try realm.write {
                     realm.add(objects)
@@ -29,16 +39,15 @@ class RealmService {
                 postError(error)
             }
         }
-
     }
     
     static func clearLessons() {
         queue.async {
-            
+
             let realm = try! Realm()
-            
+
             let lessons = realm.objects(Lesson.self)
-            
+
             do {
                 try realm.write {
                     realm.delete(lessons)

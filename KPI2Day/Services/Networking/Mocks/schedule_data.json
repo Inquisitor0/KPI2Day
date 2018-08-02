@@ -1,0 +1,1392 @@
+{
+    "data": {
+        "1": {
+            "2": {
+                "2": {
+                    "id": 6107,
+                    "type": 0,
+                    "discipline": {
+                        "id": 943,
+                        "name": "Логічне програмування",
+                        "full_name": "Логічне програмування"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 567,
+                                 "last_name": "",
+                                 "first_name": "Олексій",
+                                 "middle_name": "Вадимович",
+                                 "name": " Олексій Вадимович",
+                                 "full_name": "асистент  Олексій Вадимович",
+                                 "short_name": " О. В.",
+                                 "short_name_with_degree": "ас.  О. В.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 171,
+                              "name": "306",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6110,
+                    "type": 0,
+                    "discipline": {
+                        "id": 946,
+                        "name": "Надійність комп'ютерних систем",
+                        "full_name": "Надійність комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 89,
+                                 "last_name": "",
+                                 "first_name": "Віктор",
+                                 "middle_name": "Іванович",
+                                 "name": " Віктор Іванович",
+                                 "full_name": "доцент  Віктор Іванович",
+                                 "short_name": " В. І.",
+                                 "short_name_with_degree": "доц.  В. І.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 399,
+                              "name": "339",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "4": {
+                    "id": 6114,
+                    "type": 2,
+                    "discipline": {
+                        "id": 946,
+                        "name": "Надійність комп'ютерних систем",
+                        "full_name": "Надійність комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 89,
+                                 "last_name": "",
+                                 "first_name": "Віктор",
+                                 "middle_name": "Іванович",
+                                 "name": " Віктор Іванович",
+                                 "full_name": "доцент  Віктор Іванович",
+                                 "short_name": " В. І.",
+                                 "short_name_with_degree": "доц.  В. І.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 435,
+                              "name": "513",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            },
+            "3": {
+                "3": {
+                    "id": 6111,
+                    "type": 0,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 54,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Петрович",
+                                 "name": " Олександр Петрович",
+                                 "full_name": "доцент  Олександр Петрович",
+                                 "short_name": " О. П.",
+                                 "short_name_with_degree": "доц.  О. П.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 386,
+                              "name": "307",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "4": {
+                    "id": 6115,
+                    "type": 0,
+                    "discipline": {
+                        "id": 947,
+                        "name": "Системи реального часу",
+                        "full_name": "Системи реального часу"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 593,
+                                 "last_name": "",
+                                 "first_name": "Артем",
+                                 "middle_name": "Миколайович",
+                                 "name": " Артем Миколайович",
+                                 "full_name": "доцент  Артем Миколайович",
+                                 "short_name": " А. М.",
+                                 "short_name_with_degree": "доц.  А. М.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 386,
+                              "name": "307",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            },
+            "4": {
+                "1": {
+                    "id": 6106,
+                    "type": 2,
+                    "discipline": {
+                        "id": 943,
+                        "name": "Логічне програмування",
+                        "full_name": "Логічне програмування"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 567,
+                                 "last_name": "",
+                                 "first_name": "Олексій",
+                                 "middle_name": "Вадимович",
+                                 "name": " Олексій Вадимович",
+                                 "full_name": "асистент  Олексій Вадимович",
+                                 "short_name": " О. В.",
+                                 "short_name_with_degree": "ас.  О. В.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 416,
+                              "name": "537",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "2": {
+                    "id": 6108,
+                    "type": 2,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 573,
+                                 "last_name": "",
+                                 "first_name": "О.",
+                                 "middle_name": "І.",
+                                 "name": " О. І.",
+                                 "full_name": "асистент  О. І.",
+                                 "short_name": " О. І.",
+                                 "short_name_with_degree": "ас.  О. І.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 402,
+                              "name": "",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6112,
+                    "type": 0,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 54,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Петрович",
+                                 "name": " Олександр Петрович",
+                                 "full_name": "доцент  Олександр Петрович",
+                                 "short_name": " О. П.",
+                                 "short_name_with_degree": "доц.  О. П.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 386,
+                              "name": "307",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            },
+            "5": {
+                "1": {
+                    "id": 5570,
+                    "type": 0,
+                    "discipline": {
+                        "id": 87,
+                        "name": "Основи охорони праці",
+                        "full_name": "Основи охорони праці"
+                    },
+                    "groups": [
+                               {
+                               "id": 487,
+                               "name": "іа-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 488,
+                               "name": "іа-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 264,
+                                 "last_name": "",
+                                 "first_name": "Наталія",
+                                 "middle_name": "Артурівна",
+                                 "name": " Наталія Артурівна",
+                                 "full_name": "доцент  Наталія Артурівна",
+                                 "short_name": " Н. А.",
+                                 "short_name_with_degree": "доц.  Н. А.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 162,
+                              "name": "303",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "2": {
+                    "id": 6109,
+                    "type": 0,
+                    "discipline": {
+                        "id": 945,
+                        "name": "Системи проектування комп'ютерних систем",
+                        "full_name": "Системи проектування комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 232,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Миколайович",
+                                 "name": " Олександр Миколайович",
+                                 "full_name": "доцент  Олександр Миколайович",
+                                 "short_name": " О. М.",
+                                 "short_name_with_degree": "доц.  О. М.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 162,
+                              "name": "303",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6113,
+                    "type": 2,
+                    "discipline": {
+                        "id": 947,
+                        "name": "Системи реального часу",
+                        "full_name": "Системи реального часу"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 592,
+                                 "last_name": "",
+                                 "first_name": "П.",
+                                 "middle_name": "Г.",
+                                 "name": " П. Г.",
+                                 "full_name": "асистент  П. Г.",
+                                 "short_name": " П. Г.",
+                                 "short_name_with_degree": "ас.  П. Г.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 434,
+                              "name": "514",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "4": {
+                    "id": 6116,
+                    "type": 2,
+                    "discipline": {
+                        "id": 945,
+                        "name": "Системи проектування комп'ютерних систем",
+                        "full_name": "Системи проектування комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 232,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Миколайович",
+                                 "name": " Олександр Миколайович",
+                                 "full_name": "доцент  Олександр Миколайович",
+                                 "short_name": " О. М.",
+                                 "short_name_with_degree": "доц.  О. М.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 416,
+                              "name": "537",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            }
+        },
+        "2": {
+            "2": {
+                "2": {
+                    "id": 6119,
+                    "type": 0,
+                    "discipline": {
+                        "id": 943,
+                        "name": "Логічне програмування",
+                        "full_name": "Логічне програмування"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 567,
+                                 "last_name": "",
+                                 "first_name": "Олексій",
+                                 "middle_name": "Вадимович",
+                                 "name": " Олексій Вадимович",
+                                 "full_name": "асистент  Олексій Вадимович",
+                                 "short_name": " О. В.",
+                                 "short_name_with_degree": "ас.  О. В.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 171,
+                              "name": "306",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6123,
+                    "type": 0,
+                    "discipline": {
+                        "id": 946,
+                        "name": "Надійність комп'ютерних систем",
+                        "full_name": "Надійність комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 89,
+                                 "last_name": "",
+                                 "first_name": "Віктор",
+                                 "middle_name": "Іванович",
+                                 "name": " Віктор Іванович",
+                                 "full_name": "доцент  Віктор Іванович",
+                                 "short_name": " В. І.",
+                                 "short_name_with_degree": "доц.  В. І.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 399,
+                              "name": "339",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "4": {
+                    "id": 6127,
+                    "type": 2,
+                    "discipline": {
+                        "id": 946,
+                        "name": "Надійність комп'ютерних систем",
+                        "full_name": "Надійність комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 89,
+                                 "last_name": "",
+                                 "first_name": "Віктор",
+                                 "middle_name": "Іванович",
+                                 "name": " Віктор Іванович",
+                                 "full_name": "доцент  Віктор Іванович",
+                                 "short_name": " В. І.",
+                                 "short_name_with_degree": "доц.  В. І.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 435,
+                              "name": "513",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            },
+            "3": {
+                "1": {
+                    "id": 6117,
+                    "type": 2,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 573,
+                                 "last_name": "",
+                                 "first_name": "О.",
+                                 "middle_name": "І.",
+                                 "name": " О. І.",
+                                 "full_name": "асистент  О. І.",
+                                 "short_name": " О. І.",
+                                 "short_name_with_degree": "ас.  О. І.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 402,
+                              "name": "",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "2": {
+                    "id": 6120,
+                    "type": 1,
+                    "discipline": {
+                        "id": 87,
+                        "name": "Основи охорони праці",
+                        "full_name": "Основи охорони праці"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 32,
+                                 "last_name": "",
+                                 "first_name": "Наталія",
+                                 "middle_name": "Федорівна",
+                                 "name": " Наталія Федорівна",
+                                 "full_name": "асистент  Наталія Федорівна",
+                                 "short_name": " Н. Ф.",
+                                 "short_name_with_degree": "ас.  Н. Ф.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 165,
+                              "name": "227",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6124,
+                    "type": 0,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 54,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Петрович",
+                                 "name": " Олександр Петрович",
+                                 "full_name": "доцент  Олександр Петрович",
+                                 "short_name": " О. П.",
+                                 "short_name_with_degree": "доц.  О. П.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 386,
+                              "name": "307",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "4": {
+                    "id": 6128,
+                    "type": 0,
+                    "discipline": {
+                        "id": 947,
+                        "name": "Системи реального часу",
+                        "full_name": "Системи реального часу"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 593,
+                                 "last_name": "",
+                                 "first_name": "Артем",
+                                 "middle_name": "Миколайович",
+                                 "name": " Артем Миколайович",
+                                 "full_name": "доцент  Артем Миколайович",
+                                 "short_name": " А. М.",
+                                 "short_name_with_degree": "доц.  А. М.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 386,
+                              "name": "307",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            },
+            "4": {
+                "1": {
+                    "id": 6118,
+                    "type": 2,
+                    "discipline": {
+                        "id": 943,
+                        "name": "Логічне програмування",
+                        "full_name": "Логічне програмування"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 567,
+                                 "last_name": "",
+                                 "first_name": "Олексій",
+                                 "middle_name": "Вадимович",
+                                 "name": " Олексій Вадимович",
+                                 "full_name": "асистент  Олексій Вадимович",
+                                 "short_name": " О. В.",
+                                 "short_name_with_degree": "ас.  О. В.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 416,
+                              "name": "537",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "2": {
+                    "id": 6121,
+                    "type": 2,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 573,
+                                 "last_name": "",
+                                 "first_name": "О.",
+                                 "middle_name": "І.",
+                                 "name": " О. І.",
+                                 "full_name": "асистент  О. І.",
+                                 "short_name": " О. І.",
+                                 "short_name_with_degree": "ас.  О. І.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 402,
+                              "name": "",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6125,
+                    "type": 0,
+                    "discipline": {
+                        "id": 944,
+                        "name": "Захист інформації у комп'ютерних системах",
+                        "full_name": "Захист інформації у комп'ютерних системах"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 54,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Петрович",
+                                 "name": " Олександр Петрович",
+                                 "full_name": "доцент  Олександр Петрович",
+                                 "short_name": " О. П.",
+                                 "short_name_with_degree": "доц.  О. П.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 386,
+                              "name": "307",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            },
+            "5": {
+                "1": {
+                    "id": 5583,
+                    "type": 0,
+                    "discipline": {
+                        "id": 87,
+                        "name": "Основи охорони праці",
+                        "full_name": "Основи охорони праці"
+                    },
+                    "groups": [
+                               {
+                               "id": 487,
+                               "name": "іа-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 488,
+                               "name": "іа-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 264,
+                                 "last_name": "",
+                                 "first_name": "Наталія",
+                                 "middle_name": "Артурівна",
+                                 "name": " Наталія Артурівна",
+                                 "full_name": "доцент  Наталія Артурівна",
+                                 "short_name": " Н. А.",
+                                 "short_name_with_degree": "доц.  Н. А.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 162,
+                              "name": "303",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "2": {
+                    "id": 6122,
+                    "type": 0,
+                    "discipline": {
+                        "id": 945,
+                        "name": "Системи проектування комп'ютерних систем",
+                        "full_name": "Системи проектування комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 542,
+                               "name": "іо-42",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 543,
+                               "name": "іо-43",
+                               "okr": 0,
+                               "type": 0
+                               },
+                               {
+                               "id": 544,
+                               "name": "іо-44",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 232,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Миколайович",
+                                 "name": " Олександр Миколайович",
+                                 "full_name": "доцент  Олександр Миколайович",
+                                 "short_name": " О. М.",
+                                 "short_name_with_degree": "доц.  О. М.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 162,
+                              "name": "303",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "3": {
+                    "id": 6126,
+                    "type": 2,
+                    "discipline": {
+                        "id": 947,
+                        "name": "Системи реального часу",
+                        "full_name": "Системи реального часу"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 592,
+                                 "last_name": "",
+                                 "first_name": "П.",
+                                 "middle_name": "Г.",
+                                 "name": " П. Г.",
+                                 "full_name": "асистент  П. Г.",
+                                 "short_name": " П. Г.",
+                                 "short_name_with_degree": "ас.  П. Г.",
+                                 "degree": "асистент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 434,
+                              "name": "514",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                },
+                "4": {
+                    "id": 6129,
+                    "type": 2,
+                    "discipline": {
+                        "id": 945,
+                        "name": "Системи проектування комп'ютерних систем",
+                        "full_name": "Системи проектування комп'ютерних систем"
+                    },
+                    "groups": [
+                               {
+                               "id": 541,
+                               "name": "іо-41",
+                               "okr": 0,
+                               "type": 0
+                               }
+                               ],
+                    "teachers": [
+                                 {
+                                 "id": 232,
+                                 "last_name": "",
+                                 "first_name": "Олександр",
+                                 "middle_name": "Миколайович",
+                                 "name": " Олександр Миколайович",
+                                 "full_name": "доцент  Олександр Миколайович",
+                                 "short_name": " О. М.",
+                                 "short_name_with_degree": "доц.  О. М.",
+                                 "degree": "доцент"
+                                 }
+                                 ],
+                    "rooms": [
+                              {
+                              "id": 416,
+                              "name": "537",
+                              "building": {
+                              "id": 6,
+                              "name": "18",
+                              "latitude": 50.447021,
+                              "longitude": 30.456021
+                              }
+                              }
+                              ]
+                }
+            }
+        }
+    }
+}

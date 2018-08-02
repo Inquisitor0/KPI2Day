@@ -13,10 +13,16 @@ import CocoaLumberjack
 import RxSwift
 import SwiftyJSON
 import RealmSwift
+import PKHUD
 
 protocol ScheduleVMDelegate: class {
     func didUpdateSchedule()
     func didRecieveError(error: Error)
+}
+
+struct LessonsData {
+    var firstWeekLessons: [Int: [Lesson]] = [:]     // For easy UITableView setup
+    var secondWeekLessons: [Int: [Lesson]] = [:]    // Lessons ordered by weekday
 }
 
 class ScheduleVM {
@@ -30,54 +36,76 @@ class ScheduleVM {
     private let bag = DisposeBag()
     private let provider = OnlineProvider<AppNetworkService>()
     
-    private var lessons: Results<Lesson>!
     private var token: NotificationToken?
-    private let realm = try! Realm()
+//    private let realm = try! Realm()
     
-    var firstWeekLessons: [Int: [Lesson]] = [:]     // For easy UITableView setup
-    var secondWeekLessons: [Int: [Lesson]] = [:]    // Lessons ordered by weekday
+    var data = Variable<LessonsData>(LessonsData())
+    
+    private var lessons: Results<Lesson>! {
+        didSet {
+            if lessons.isEmpty {
+                downloadSchedule()
+            } else {
+                setupSchedule()
+            }
+        }
+    }
     
     func lessons(forWeek index: Int) -> [Int: [Lesson]] {
-        return index == 0 ? firstWeekLessons : secondWeekLessons
+        return index == 0 ? data.value.firstWeekLessons : data.value.secondWeekLessons
     }
     
     init(type: ScheduleType) {
         self.scheduleType = type
-        
-        if type.shouldUseRealmStorage {
-            lessons = realm.objects(Lesson.self)
-            observeSchedule()
+        fetchSchedule()
+    }
+    
+    
+    private func fetchSchedule() {
+        switch scheduleType {
+        case .group:
+            RealmService.fetchLessons { [unowned self] res in
+                self.lessons = res
+            }
+        case .teacher(let id):
+            // TODO: Filter by TeacherID
+            RealmService.fetchLessons { [unowned self] res in
+                self.lessons = res
+            }
         }
     }
     
     // Fetch from Realm
-    private func observeSchedule() {
-        token = lessons?.observe({ [unowned self] (change) in
-            self.setupSchedule()
-            
-            if self.lessons != nil, !self.lessons.isEmpty {
-                DispatchQueue.main.async { [unowned self] in
-                    self.delegate?.didUpdateSchedule()
-                }
-            }
-        })
-    }
+//    private func observeSchedule() {
+//        token = lessons?.observe({ [unowned self] (change) in
+//            self.setupSchedule()
+//
+//            if self.lessons != nil, !self.lessons.isEmpty {
+//                DispatchQueue.main.async { [unowned self] in
+//                    self.delegate?.didUpdateSchedule()
+//                }
+//            }
+//        })
+//    }
     
-    func loadFullSchedule() {
-        if scheduleType.shouldUseRealmStorage {
-            guard lessons != nil, !lessons.isEmpty else {
-                downloadSchedule()
-                return
-            }
-        } else {
-            downloadSchedule()
-        }
-    }
+//    func loadFullSchedule() {
+//        if scheduleType.shouldUseRealmStorage {
+//            guard lessons != nil, !lessons.isEmpty else {
+//                HUD.show(.progress)
+//                downloadSchedule()
+//                return
+//            }
+//        } else {
+//            HUD.show(.progress)
+//            downloadSchedule()
+//        }
+//    }
     
     private func downloadSchedule() {
         downloadScheduleSignal()
             .subscribe(onSuccess: { [unowned self] response in
-                self.setupLessonsDictionaries(response)
+                self.parseLessons(response)
+                self.fetchSchedule()
             }) { error in
                 DispatchQueue.main.async {
                     self.delegate?.didRecieveError(error: error)
@@ -95,31 +123,33 @@ class ScheduleVM {
         }
     }
     
+    /* Internal login */
+    
     private func setupSchedule() {
         guard lessons != nil else { return }
         
+        var lessonsData = LessonsData()
+        
         for lesson in lessons {
-            addLesson(lesson: lesson, week: lesson.weekNumber, day: lesson.day)
-        }
-    }
-    
-    private func addLesson(lesson: Lesson, week: Int, day: Int) {
-        if week == 1 {
-            if self.firstWeekLessons[day] != nil {
-                self.firstWeekLessons[day]!.append(lesson)
-            } else {
-                self.firstWeekLessons[day] = [lesson]
-            }
-        } else if week == 2 {
-            if self.secondWeekLessons[day] != nil {
-                self.secondWeekLessons[day]!.append(lesson)
-            } else {
-                self.secondWeekLessons[day] = [lesson]
+            if lesson.weekNumber == 1 {
+                if lessonsData.firstWeekLessons[lesson.day] != nil {
+                    lessonsData.firstWeekLessons[lesson.day]!.append(lesson)
+                } else {
+                    lessonsData.firstWeekLessons[lesson.day] = [lesson]
+                }
+            } else if lesson.weekNumber == 2 {
+                if lessonsData.secondWeekLessons[lesson.day] != nil {
+                    lessonsData.secondWeekLessons[lesson.day]!.append(lesson)
+                } else {
+                    lessonsData.secondWeekLessons[lesson.day] = [lesson]
+                }
             }
         }
+        
+        data.value = lessonsData
     }
     
-    private func setupLessonsDictionaries(_ data: Any) {
+    private func parseLessons(_ data: Any) {
         
         let json = JSON(data)
         let weeksDict = json["data"].dictionaryValue
@@ -139,26 +169,26 @@ class ScheduleVM {
                 for (_, lessonJSON) in lessonsDict {
                     
                     let lesson = Lesson(json: lessonJSON, day: dayIndex, week: weekIndex)
-                    if scheduleType.shouldUseRealmStorage {
-                        lessons.append(lesson)
-                    } else {
-                        addLesson(lesson: lesson, week: weekIndex, day: dayIndex)
-                    }
+                    lessons.append(lesson)
+//                    addLesson(lesson: lesson, week: weekIndex, day: dayIndex)
+//                    if scheduleType.shouldUseRealmStorage {
+//                        lessons.append(lesson)
+//                    } else {
+//
+//                    }
                 }
             }
         }
         
-        if scheduleType.shouldUseRealmStorage {
-            saveLessonsLocally(lessons: lessons)
-        } else {
-            DispatchQueue.main.async { [unowned self] in
-                self.delegate?.didUpdateSchedule()
-            }
-        }
-    }
-    
-    private func saveLessonsLocally(lessons: [Lesson]) {
         AppDataManager.shared.saveLessons(lessons)
+        
+//        if scheduleType.shouldUseRealmStorage {
+//            saveLessonsLocally(lessons: lessons)
+//        } else {
+//            DispatchQueue.main.async { [unowned self] in
+//                self.delegate?.didUpdateSchedule()
+//            }
+//        }
     }
     
     private func observeRealmErrors() {

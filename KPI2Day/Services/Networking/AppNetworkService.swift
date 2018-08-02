@@ -17,7 +17,7 @@ enum AppNetworkService {
     case loadSchedule(groupId: String)
     case loadFullSchedule(groupId: String)
     
-    case loadTeacherSchedule(teacherId: String)
+    case loadTeacherSchedule(teacherId: Int)
     
     case loadGroup(name: String)
 }
