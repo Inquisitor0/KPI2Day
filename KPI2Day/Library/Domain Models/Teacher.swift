@@ -22,6 +22,8 @@ import Realm
     dynamic var shortName: String = ""
     dynamic var shortNameWithDegree: String = ""
     
+    dynamic var scheduleWasLoaded: Bool = false
+    
     static func fromJSON(_ data: Any) -> Teacher {
         let json = JSON(data)
         return Teacher(json: json)

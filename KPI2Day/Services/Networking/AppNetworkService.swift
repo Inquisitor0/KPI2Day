@@ -65,8 +65,8 @@ extension AppNetworkService: TargetType {
             return "lessons"
         case .loadFullSchedule(let groupId):
             return "groups/\(groupId)/timetable/"
-        case .loadTeacherSchedule(let teacherId):
-            return "teachers/\(teacherId)/timetable/"
+        case .loadTeacherSchedule:
+            return "lessons"
         case .loadGroup:
             return "groups"
         }
@@ -79,6 +79,9 @@ extension AppNetworkService: TargetType {
                     "limit": Constants.lessonsDefaultOffset]
         case .loadGroup(let name):
             return ["name": name]
+        case .loadTeacherSchedule(let teacherId):
+            return ["teachers": teacherId,
+                    "limit": 100]
         default:
             return nil
         }

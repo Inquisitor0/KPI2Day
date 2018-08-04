@@ -15,17 +15,24 @@ class RealmService {
     static let queue = DispatchQueue(label: "realm_queue", qos: .background)
     static var errors = Variable<Error?>(nil)
     
-    static func fetchLessons(_ completion: @escaping (Results<Lesson>) -> Void) {
+    static func fetchLessons(_ teacherId: Int? = nil, _ completion: @escaping (AnyBidirectionalCollection<Lesson>) -> Void) {
         DispatchQueue.main.async {
             
             let realm = try! Realm()
             
-            let lessons = realm.objects(Lesson.self)
+            let lessons: AnyBidirectionalCollection<Lesson>
+            
+            if let id = teacherId {
+                lessons = AnyBidirectionalCollection(realm.objects(Lesson.self).filter { $0.teachers.containsById(id) })
+            } else {
+                 lessons = AnyBidirectionalCollection(realm.objects(Lesson.self))
+            }
+            
             completion(lessons)
         }
     }
     
-    static func save<T: Object>(_ objects: [T]) {
+    static func save<T: Object>(_ objects: [T], _ teacherId: Int? = nil, _ completion: (() -> Void)? = nil) {
         
         queue.async {
 
@@ -35,6 +42,17 @@ class RealmService {
                 try realm.write {
                     realm.add(objects)
                 }
+                
+                // To prevent multiple downloads
+                if let id = teacherId {
+                    let teacher = realm.objects(Teacher.self).filter { $0.id == id }.first
+                    
+                    try realm.write {
+                        teacher?.scheduleWasLoaded = true
+                    }
+                }
+                
+                completion?()
             } catch {
                 postError(error)
             }

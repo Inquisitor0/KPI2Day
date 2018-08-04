@@ -32,18 +32,18 @@ class ScheduleVM {
     weak var delegate: ScheduleVMDelegate?
     
     let scheduleType: ScheduleType
+    var teacher: Teacher?
     
     private let bag = DisposeBag()
     private let provider = OnlineProvider<AppNetworkService>()
     
     private var token: NotificationToken?
-//    private let realm = try! Realm()
     
     var data = Variable<LessonsData>(LessonsData())
     
-    private var lessons: Results<Lesson>! {
+    private var lessons: AnyBidirectionalCollection<Lesson>! {
         didSet {
-            if lessons.isEmpty {
+            if lessons.isEmpty || (teacher != nil && teacher?.scheduleWasLoaded == false) {
                 downloadSchedule()
             } else {
                 setupSchedule()
@@ -51,15 +51,22 @@ class ScheduleVM {
         }
     }
     
-    func lessons(forWeek index: Int) -> [Int: [Lesson]] {
-        return index == 0 ? data.value.firstWeekLessons : data.value.secondWeekLessons
-    }
-    
     init(type: ScheduleType) {
         self.scheduleType = type
+        
+        switch scheduleType {
+        case .group:
+            self.teacher = nil
+        case .teacher(let teacher):
+//            self.token =
+        }
+        
         fetchSchedule()
     }
     
+    func lessons(forWeek index: Int) -> [Int: [Lesson]] {
+        return index == 0 ? data.value.firstWeekLessons : data.value.secondWeekLessons
+    }
     
     private func fetchSchedule() {
         switch scheduleType {
@@ -67,45 +74,21 @@ class ScheduleVM {
             RealmService.fetchLessons { [unowned self] res in
                 self.lessons = res
             }
-        case .teacher(let id):
-            // TODO: Filter by TeacherID
-            RealmService.fetchLessons { [unowned self] res in
-                self.lessons = res
+        case .teacher(let teacher):
+            DispatchQueue.main.async {
+                RealmService.fetchLessons(Int(teacher.id), { [unowned self] res in
+                    self.lessons = res
+                })
             }
         }
     }
     
-    // Fetch from Realm
-//    private func observeSchedule() {
-//        token = lessons?.observe({ [unowned self] (change) in
-//            self.setupSchedule()
-//
-//            if self.lessons != nil, !self.lessons.isEmpty {
-//                DispatchQueue.main.async { [unowned self] in
-//                    self.delegate?.didUpdateSchedule()
-//                }
-//            }
-//        })
-//    }
-    
-//    func loadFullSchedule() {
-//        if scheduleType.shouldUseRealmStorage {
-//            guard lessons != nil, !lessons.isEmpty else {
-//                HUD.show(.progress)
-//                downloadSchedule()
-//                return
-//            }
-//        } else {
-//            HUD.show(.progress)
-//            downloadSchedule()
-//        }
-//    }
-    
     private func downloadSchedule() {
         downloadScheduleSignal()
             .subscribe(onSuccess: { [unowned self] response in
-                self.parseLessons(response)
-                self.fetchSchedule()
+                self.parseLessons(response, { [unowned self] in
+                    self.fetchSchedule()
+                })
             }) { error in
                 DispatchQueue.main.async {
                     self.delegate?.didRecieveError(error: error)
@@ -118,12 +101,12 @@ class ScheduleVM {
         switch scheduleType {
         case .group(let id):
             return provider.request(.loadFullSchedule(groupId: id))
-        case .teacher(let id):
-            return provider.request(.loadTeacherSchedule(teacherId: id))
+        case .teacher(let teacher):
+            return provider.request(.loadTeacherSchedule(teacherId: Int(teacher.id)))
         }
     }
     
-    /* Internal login */
+    /* Internal logic */
     
     private func setupSchedule() {
         guard lessons != nil else { return }
@@ -149,7 +132,7 @@ class ScheduleVM {
         data.value = lessonsData
     }
     
-    private func parseLessons(_ data: Any) {
+    private func parseLessons(_ data: Any, _ completion: (() -> Void)? = nil) {
         
         let json = JSON(data)
         let weeksDict = json["data"].dictionaryValue
@@ -170,25 +153,15 @@ class ScheduleVM {
                     
                     let lesson = Lesson(json: lessonJSON, day: dayIndex, week: weekIndex)
                     lessons.append(lesson)
-//                    addLesson(lesson: lesson, week: weekIndex, day: dayIndex)
-//                    if scheduleType.shouldUseRealmStorage {
-//                        lessons.append(lesson)
-//                    } else {
-//
-//                    }
                 }
             }
         }
         
-        AppDataManager.shared.saveLessons(lessons)
-        
-//        if scheduleType.shouldUseRealmStorage {
-//            saveLessonsLocally(lessons: lessons)
-//        } else {
-//            DispatchQueue.main.async { [unowned self] in
-//                self.delegate?.didUpdateSchedule()
-//            }
-//        }
+        DispatchQueue.main.async { [unowned self] in
+            AppDataManager.shared.saveLessons(lessons, Int(self.teacher?.id ?? -1)) {
+                completion?()
+            }
+        }
     }
     
     private func observeRealmErrors() {

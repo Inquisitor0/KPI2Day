@@ -87,7 +87,7 @@ import Realm
         rooms.append(objectsIn: roomsModels)
     }
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

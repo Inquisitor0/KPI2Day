@@ -13,7 +13,7 @@ import RxSwift
 
 enum ScheduleType {
     case group(id: String)
-    case teacher(id: Int)
+    case teacher(teacher: Teacher)
     
     var targetId: String {
         switch self {
@@ -81,12 +81,9 @@ class ScheduleVC: UIViewController {
                 self.tableView.reloadData()
             })
         .disposed(by: bag)
-//        HUD.show(.progress)
-//        viewModel.loadFullSchedule()
     }
     
     private func setupNavBar() {
-        // TODO: (alex) Localizable
         title = "Schedule"
         setupSegmentedControl()
     }
