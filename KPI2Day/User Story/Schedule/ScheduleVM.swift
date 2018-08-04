@@ -63,12 +63,12 @@ class ScheduleVM {
     
     private func fetchSchedule() {
         switch scheduleType {
-        case .group:
-            RealmService.fetchLessons { [unowned self] res in
+        case .group(let groupId):
+            RealmService.fetchLessons(nil, groupId) { [unowned self] res in
                 self.lessons = res
             }
         case .teacher(let teacher):
-            RealmService.fetchLessons(Int(teacher.id), { [unowned self] res in
+            RealmService.fetchLessons(Int(teacher.id), nil, { [unowned self] res in
                 self.lessons = res
             })
         }
@@ -89,22 +89,33 @@ class ScheduleVM {
     }
     
     private func downloadTeachersSchedule() {
-        downloadScheduleSignal(teachersIDs: Array(teachersIds))
-            .subscribe(onSuccess: { [unowned self] response in
-                self.parseTeachersLessons(response, { [unowned self] in
+        
+        var signals: [Observable<Any>] = []
+        
+        teachersIds.forEach { signals.append(downloadScheduleSignal(teacherId: $0).asObservable()) }
+        
+        Observable
+            .zip(signals)
+            .subscribe(onNext: { [unowned self] results in
+                var lessons: [Lesson] = []
+                results.forEach { lessons.append(contentsOf: self.parseTeacherLessons($0)) }
+                
+                AppDataManager.shared.saveLessons(lessons, {
                     self.fetchSchedule()
                 })
-            }) { error in
-                DispatchQueue.main.async {
-                    self.delegate?.didRecieveError(error: error)
-                }
-            }
-            .disposed(by: self.bag)
+                
+            }, onError: { [unowned self] error in
+                self.delegate?.didRecieveError(error: error)
+            }, onCompleted: {
+                debugPrint("Fetched teachers schedule")
+            }) {
+                debugPrint("Fetch schedule signal disposed")
+        }.disposed(by: bag)
     }
     
-    private func downloadScheduleSignal(teachersIDs: [Int]? = nil) -> PrimitiveSequence<SingleTrait, Any> {
-        if let IDs = teachersIDs {
-            return provider.request(.loadTeachersSchedule(teachersIDs: IDs))
+    private func downloadScheduleSignal(teacherId: Int? = nil) -> PrimitiveSequence<SingleTrait, Any> {
+        if let id = teacherId {
+            return provider.request(.loadTeacherSchedule(teacherId: id))
         } else {
             let groupId = AppDataManager.shared.currentGroupId.value ?? ""
             return provider.request(.loadFullSchedule(groupId: groupId))
@@ -165,12 +176,12 @@ class ScheduleVM {
             }
         }
         
-            AppDataManager.shared.saveLessons(lessons) {
-                completion?()
-            }
+        AppDataManager.shared.saveLessons(lessons) {
+            completion?()
+        }
     }
     
-    private func parseTeachersLessons(_ data: Any, _ completion: (() -> Void)? = nil) {
+    private func parseTeacherLessons(_ data: Any) -> [Lesson] {
         
         let json = JSON(data)
         let lessonsJSONArray = json["results"].arrayValue
@@ -182,18 +193,16 @@ class ScheduleVM {
             lessons.append(lesson)
         }
         
-        AppDataManager.shared.saveLessons(lessons) {
-            completion?()
-        }
+        return lessons
     }
     
-    private func observeRealmErrors() {
-        RealmService.errors.asObservable()
-            .subscribe(onNext: { [unowned self] (realmError) in
-                guard let error = realmError else { return }
-                self.delegate?.didRecieveError(error: error)
-                DDLogError(error.localizedDescription)
-            })
-            .disposed(by: bag)
-    }
+//    private func observeRealmErrors() {
+//        RealmService.errors.asObservable()
+//            .subscribe(onNext: { [unowned self] (realmError) in
+//                guard let error = realmError else { return }
+//                self.delegate?.didRecieveError(error: error)
+//                DDLogError(error.localizedDescription)
+//            })
+//            .disposed(by: bag)
+//    }
 }

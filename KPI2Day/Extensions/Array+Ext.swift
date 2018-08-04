@@ -14,3 +14,9 @@ extension List where Element == Teacher {
         return self.contains { $0.id == id }
     }
 }
+
+extension List where Element == Group {
+    func containsById(_ id: Int) -> Bool {
+        return self.contains { $0.id == id }
+    }
+}

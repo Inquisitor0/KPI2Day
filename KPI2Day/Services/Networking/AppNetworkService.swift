@@ -72,10 +72,10 @@ extension AppNetworkService: TargetType {
             return "groups"
         case .loadTeachersSchedule(let ids):
             var result = ids.reduce("lessons/?") { (res, id) in
-                return "teachers=\(id)&"
+                res + "teachers=\(id)&"
             }
             
-            result += "limit=1000"
+            result += "limit=100"
             return result
         }
     }
