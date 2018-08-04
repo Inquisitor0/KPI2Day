@@ -18,7 +18,6 @@ enum AppNetworkService {
     case loadFullSchedule(groupId: String)
     
     case loadTeacherSchedule(teacherId: Int)
-    case loadTeachersSchedule(teachersIDs: [Int])
     
     case loadGroup(name: String)
 }
@@ -70,13 +69,6 @@ extension AppNetworkService: TargetType {
             return "lessons"
         case .loadGroup:
             return "groups"
-        case .loadTeachersSchedule(let ids):
-            var result = ids.reduce("lessons/?") { (res, id) in
-                res + "teachers=\(id)&"
-            }
-            
-            result += "limit=100"
-            return result
         }
     }
     
