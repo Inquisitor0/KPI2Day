@@ -29,10 +29,11 @@ class ScheduleVM {
     
     typealias scheduleCompletion = ((Error?) -> Void)
     
+    private var teachersIds: Set<Int> = []
+    
     weak var delegate: ScheduleVMDelegate?
     
     let scheduleType: ScheduleType
-    var teacher: Teacher?
     
     private let bag = DisposeBag()
     private let provider = OnlineProvider<AppNetworkService>()
@@ -43,8 +44,8 @@ class ScheduleVM {
     
     private var lessons: AnyBidirectionalCollection<Lesson>! {
         didSet {
-            if lessons.isEmpty || (teacher != nil && teacher?.scheduleWasLoaded == false) {
-                downloadSchedule()
+            if lessons.isEmpty {
+                downloadGroupSchedule()
             } else {
                 setupSchedule()
             }
@@ -53,14 +54,6 @@ class ScheduleVM {
     
     init(type: ScheduleType) {
         self.scheduleType = type
-        
-        switch scheduleType {
-        case .group:
-            self.teacher = nil
-        case .teacher(let teacher):
-//            self.token =
-        }
-        
         fetchSchedule()
     }
     
@@ -75,18 +68,30 @@ class ScheduleVM {
                 self.lessons = res
             }
         case .teacher(let teacher):
-            DispatchQueue.main.async {
-                RealmService.fetchLessons(Int(teacher.id), { [unowned self] res in
-                    self.lessons = res
-                })
-            }
+            RealmService.fetchLessons(Int(teacher.id), { [unowned self] res in
+                self.lessons = res
+            })
         }
     }
     
-    private func downloadSchedule() {
+    private func downloadGroupSchedule() {
         downloadScheduleSignal()
             .subscribe(onSuccess: { [unowned self] response in
-                self.parseLessons(response, { [unowned self] in
+                self.parseGroupLessons(response, { [unowned self] in
+                    self.downloadTeachersSchedule()
+                })
+            }) { error in
+                DispatchQueue.main.async {
+                    self.delegate?.didRecieveError(error: error)
+                }
+            }
+            .disposed(by: self.bag)
+    }
+    
+    private func downloadTeachersSchedule() {
+        downloadScheduleSignal(teachersIDs: Array(teachersIds))
+            .subscribe(onSuccess: { [unowned self] response in
+                self.parseTeachersLessons(response, { [unowned self] in
                     self.fetchSchedule()
                 })
             }) { error in
@@ -97,12 +102,12 @@ class ScheduleVM {
             .disposed(by: self.bag)
     }
     
-    private func downloadScheduleSignal() -> PrimitiveSequence<SingleTrait, Any> {
-        switch scheduleType {
-        case .group(let id):
-            return provider.request(.loadFullSchedule(groupId: id))
-        case .teacher(let teacher):
-            return provider.request(.loadTeacherSchedule(teacherId: Int(teacher.id)))
+    private func downloadScheduleSignal(teachersIDs: [Int]? = nil) -> PrimitiveSequence<SingleTrait, Any> {
+        if let IDs = teachersIDs {
+            return provider.request(.loadTeachersSchedule(teachersIDs: IDs))
+        } else {
+            let groupId = AppDataManager.shared.currentGroupId.value ?? ""
+            return provider.request(.loadFullSchedule(groupId: groupId))
         }
     }
     
@@ -132,7 +137,7 @@ class ScheduleVM {
         data.value = lessonsData
     }
     
-    private func parseLessons(_ data: Any, _ completion: (() -> Void)? = nil) {
+    private func parseGroupLessons(_ data: Any, _ completion: (() -> Void)? = nil) {
         
         let json = JSON(data)
         let weeksDict = json["data"].dictionaryValue
@@ -153,14 +158,32 @@ class ScheduleVM {
                     
                     let lesson = Lesson(json: lessonJSON, day: dayIndex, week: weekIndex)
                     lessons.append(lesson)
+                    
+                        // Save unique IDs to fetch teachers' schedule later
+                    lesson.teachers.forEach { teachersIds.insert($0.id) }
                 }
             }
         }
         
-        DispatchQueue.main.async { [unowned self] in
-            AppDataManager.shared.saveLessons(lessons, Int(self.teacher?.id ?? -1)) {
+            AppDataManager.shared.saveLessons(lessons) {
                 completion?()
             }
+    }
+    
+    private func parseTeachersLessons(_ data: Any, _ completion: (() -> Void)? = nil) {
+        
+        let json = JSON(data)
+        let lessonsJSONArray = json["results"].arrayValue
+        
+        var lessons: [Lesson] = []
+        
+        for lessonJSON in lessonsJSONArray {
+            let lesson = Lesson(json: lessonJSON)
+            lessons.append(lesson)
+        }
+        
+        AppDataManager.shared.saveLessons(lessons) {
+            completion?()
         }
     }
     

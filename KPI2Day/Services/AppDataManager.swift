@@ -33,8 +33,8 @@ class AppDataManager {
         Defaults[.groupName] = name
     }
  
-    func saveLessons(_ lessons: [Lesson], _ teacherId: Int? = nil, _ completion: (() -> Void)? = nil) {
-        RealmService.save(lessons, teacherId) {
+    func saveLessons(_ lessons: [Lesson], _ completion: (() -> Void)? = nil) {
+        RealmService.save(lessons) {
             completion?()
         }
     }
