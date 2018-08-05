@@ -24,12 +24,12 @@ enum ScheduleType {
         }
     }
     
-    var shouldUseRealmStorage: Bool {
+    var teacherType: Bool {
         switch self {
         case .group:
-            return true
-        case .teacher:
             return false
+        case .teacher:
+            return true
         }
     }
 }
@@ -84,7 +84,14 @@ class ScheduleVC: UIViewController {
     }
     
     private func setupNavBar() {
-        title = "Schedule"
+        
+        switch viewModel.scheduleType {
+        case .group:
+            title = AppDataManager.shared.currentGroupName?.uppercased() ?? "Schedule"
+        case .teacher(let teacher):
+            title = teacher.shortNameWithDegree
+        }
+        
         setupSegmentedControl()
     }
 }
@@ -134,14 +141,18 @@ extension ScheduleVC: UITableViewDelegate, UITableViewDataSource {
         let lesson = lessonsArray[indexPath.row]
         let cell = LessonTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myIdentifier")
         let model = scheduleCellViewModel(lesson: lesson, index: indexPath.row + 1)
-        cell.update(model: model)
+        
+        cell.update(model: model, showGroup: viewModel.scheduleType.teacherType)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let lessonsArray = viewModel.lessons(forWeek: currentWeekIndex)[indexPath.section + 1] else { return }
+        guard !viewModel.scheduleType.teacherType,
+            let lessonsArray = viewModel.lessons(forWeek: currentWeekIndex)[indexPath.section + 1]
+        else { return }
+        
         let lesson = lessonsArray[indexPath.row]
         
         showLessonDetails(lesson: lesson)
@@ -153,10 +164,12 @@ extension ScheduleVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func scheduleCellViewModel(lesson: Lesson, index: Int) -> LessonTableCellViewModel {
+        
         let model = LessonTableCellViewModel(subjectIndex: index,
-                                             roomNumber: lesson.rooms.first?.fullName ?? "",
-                                             subjectName: lesson.discipline?.name ?? "",
-                                             teacherName: lesson.teachers.first?.fullName ?? "")
+                                         roomNumber: lesson.rooms.first?.fullName ?? "",
+                                         subjectName: lesson.discipline?.name ?? "",
+                                         teacherName: lesson.teachers.first?.fullName ?? "",
+                                         groupName: lesson.groups.first?.name ?? "") // TODO: Need to handle multiple groups
         return model
     }
 }

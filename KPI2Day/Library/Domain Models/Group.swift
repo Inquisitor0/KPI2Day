@@ -27,4 +27,11 @@ import Realm
         id = json["id"].intValue
         name = json["name"].stringValue
     }
+    
+    convenience init(id: Int) {
+        self.init()
+        
+        self.id = id
+        self.name = ""
+    }
 }

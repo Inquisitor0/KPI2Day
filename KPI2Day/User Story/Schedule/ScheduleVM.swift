@@ -38,8 +38,6 @@ class ScheduleVM {
     private let bag = DisposeBag()
     private let provider = OnlineProvider<AppNetworkService>()
     
-    private var token: NotificationToken?
-    
     var data = Variable<LessonsData>(LessonsData())
     
     private var lessons: AnyBidirectionalCollection<Lesson>! {
@@ -195,14 +193,4 @@ class ScheduleVM {
         
         return lessons
     }
-    
-//    private func observeRealmErrors() {
-//        RealmService.errors.asObservable()
-//            .subscribe(onNext: { [unowned self] (realmError) in
-//                guard let error = realmError else { return }
-//                self.delegate?.didRecieveError(error: error)
-//                DDLogError(error.localizedDescription)
-//            })
-//            .disposed(by: bag)
-//    }
 }

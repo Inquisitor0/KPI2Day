@@ -47,7 +47,6 @@ import Realm
         for item in json["teachers_short_names"].arrayValue.enumerated() {
             teachersModels[item.offset].shortName = item.element.stringValue
         }
-        
         teachers.append(objectsIn: teachersModels)
         
         // Parse rooms
@@ -60,8 +59,19 @@ import Realm
         for item in json["rooms_full_names"].arrayValue.enumerated() {
             roomsModels[item.offset].fullName = item.element.stringValue
         }
-        
         rooms.append(objectsIn: roomsModels)
+        
+        // Parse groups
+        
+        var groupsModels: [Group] = []
+        json["groups"].arrayValue.forEach {
+            groupsModels.append(Group(id: $0.intValue))
+        }
+        
+        for item in json["groups_names"].arrayValue.enumerated() {
+            groupsModels[item.offset].name = item.element.stringValue
+        }
+        groups.append(objectsIn: groupsModels)
     }
     
     convenience init(json: JSON, day: Int, week: Int) {
