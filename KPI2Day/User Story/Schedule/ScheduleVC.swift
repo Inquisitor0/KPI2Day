@@ -78,6 +78,12 @@ class ScheduleVC: UIViewController {
         viewModel.data.asObservable()
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [unowned self] (data) in
+                
+                guard !data.firstWeekLessons.isEmpty,
+                    !data.secondWeekLessons.isEmpty
+                    else { HUD.show(.progress); return }
+                
+                HUD.hide()
                 self.tableView.reloadData()
             })
         .disposed(by: bag)
@@ -178,14 +184,11 @@ extension ScheduleVC: UITableViewDelegate, UITableViewDataSource {
 
 extension ScheduleVC: ScheduleVMDelegate {
     
-    func didUpdateSchedule() {
-        HUD.hide()
-        tableView.reloadData()
-    }
-    
     func didRecieveError(error: Error) {
-        HUD.hide()
-        AlertPresenter.showErrorAlert(title: error.localizedDescription)
+        DispatchQueue.main.async {
+            HUD.hide()
+            AlertPresenter.showErrorAlert(title: error.localizedDescription)
+        }
     }
 }
 

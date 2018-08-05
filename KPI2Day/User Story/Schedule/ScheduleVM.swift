@@ -16,7 +16,6 @@ import RealmSwift
 import PKHUD
 
 protocol ScheduleVMDelegate: class {
-    func didUpdateSchedule()
     func didRecieveError(error: Error)
 }
 
@@ -79,9 +78,7 @@ class ScheduleVM {
                     self.downloadTeachersSchedule()
                 })
             }) { error in
-                DispatchQueue.main.async {
-                    self.delegate?.didRecieveError(error: error)
-                }
+                self.delegate?.didRecieveError(error: error)
             }
             .disposed(by: self.bag)
     }
