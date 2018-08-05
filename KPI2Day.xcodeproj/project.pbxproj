@@ -41,6 +41,7 @@
 		842B6C3A20C1BD870022AB36 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B6C3920C1BD870022AB36 /* LessonView.swift */; };
 		842B6C4220C2895E0022AB36 /* configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842B6C4120C2895E0022AB36 /* configs.plist */; };
 		84C4A55720F0A3B5005DC5D4 /* schedule_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 84C4A55620F0A3B5005DC5D4 /* schedule_data.json */; };
+		84FAD24A2115FCE800B8DA05 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAD2492115FCE800B8DA05 /* Group.swift */; };
 		93FAA92B57B7B9534E1DE598 /* Pods_KPI2Day.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858C35E91CA1476DC162D27D /* Pods_KPI2Day.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		842B6C3920C1BD870022AB36 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		842B6C4120C2895E0022AB36 /* configs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = configs.plist; sourceTree = "<group>"; };
 		84C4A55620F0A3B5005DC5D4 /* schedule_data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schedule_data.json; sourceTree = "<group>"; };
+		84FAD2492115FCE800B8DA05 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		858C35E91CA1476DC162D27D /* Pods_KPI2Day.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KPI2Day.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92066B4A7EC5AADC0314D6BA /* Pods-KPI2Day.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KPI2Day.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KPI2Day/Pods-KPI2Day.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +221,7 @@
 				842B6BFE20BF05910022AB36 /* Teacher.swift */,
 				842B6BFF20BF05910022AB36 /* Room.swift */,
 				842B6C0020BF05910022AB36 /* Discipline.swift */,
+				84FAD2492115FCE800B8DA05 /* Group.swift */,
 			);
 			path = "Domain Models";
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				842B6C1C20BF05910022AB36 /* Enums.swift in Sources */,
 				842B6C3020C1BB390022AB36 /* VendorService.swift in Sources */,
 				841245F120F2033400EA4527 /* Array+Ext.swift in Sources */,
+				84FAD24A2115FCE800B8DA05 /* Group.swift in Sources */,
 				842B6C1920BF05910022AB36 /* Constants.swift in Sources */,
 				842B6C2920BF05910022AB36 /* AppDataManager.swift in Sources */,
 			);

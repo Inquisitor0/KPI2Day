@@ -20,6 +20,7 @@ import Realm
     dynamic var discipline: Discipline? = nil
     dynamic var teachers = List<Teacher>()
     dynamic var rooms = List<Room>()
+    dynamic var groups = List<Group>()
     
     static func fromJSON(_ data: Any) -> Lesson {
         let json = JSON(data)
@@ -46,7 +47,6 @@ import Realm
         for item in json["teachers_short_names"].arrayValue.enumerated() {
             teachersModels[item.offset].shortName = item.element.stringValue
         }
-        
         teachers.append(objectsIn: teachersModels)
         
         // Parse rooms
@@ -59,8 +59,19 @@ import Realm
         for item in json["rooms_full_names"].arrayValue.enumerated() {
             roomsModels[item.offset].fullName = item.element.stringValue
         }
-        
         rooms.append(objectsIn: roomsModels)
+        
+        // Parse groups
+        
+        var groupsModels: [Group] = []
+        json["groups"].arrayValue.forEach {
+            groupsModels.append(Group(id: $0.intValue))
+        }
+        
+        for item in json["groups_names"].arrayValue.enumerated() {
+            groupsModels[item.offset].name = item.element.stringValue
+        }
+        groups.append(objectsIn: groupsModels)
     }
     
     convenience init(json: JSON, day: Int, week: Int) {
@@ -76,18 +87,22 @@ import Realm
         json["teachers"].arrayValue.forEach {
             teachersModels.append(Teacher(json: $0))
         }
-
         teachers.append(objectsIn: teachersModels)
         
         var roomsModels: [Room] = []
         json["rooms"].arrayValue.forEach {
             roomsModels.append(Room(json: $0, isFullBuildingModel: true))
         }
-
         rooms.append(objectsIn: roomsModels)
+        
+        var groupsModels: [Group] = []
+        json["groups"].arrayValue.forEach {
+            groupsModels.append(Group(json: $0))
+        }
+        groups.append(objectsIn: groupsModels)
     }
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

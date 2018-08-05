@@ -14,6 +14,7 @@ struct LessonTableCellViewModel {
     let roomNumber: String
     let subjectName: String
     let teacherName: String
+    let groupName: String
 }
 
 class LessonTableViewCell: UITableViewCell {
@@ -22,6 +23,7 @@ class LessonTableViewCell: UITableViewCell {
     private let roomLabel = UILabel()
     private let titleLabel = UILabel()
     private let teacherLabel = UILabel()
+    private let groupLabel = UILabel()
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:)")
@@ -55,7 +57,16 @@ class LessonTableViewCell: UITableViewCell {
             make.right.equalToSuperview().offset(-10)
             make.top.equalToSuperview().offset(10)
             make.left.equalTo(titleLabel.snp.right)
-            make.height.equalTo(30)
+            make.height.equalTo(20)
+        }
+        
+        addSubview(groupLabel)
+        groupLabel.adjustsFontSizeToFitWidth = true
+        groupLabel.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-10)
+            make.top.equalTo(roomLabel.snp.bottom).offset(10)
+            make.left.equalTo(titleLabel.snp.right)
+            make.height.equalTo(20)
         }
         
         addSubview(teacherLabel)
@@ -68,10 +79,15 @@ class LessonTableViewCell: UITableViewCell {
         }
     }
     
-    func update(model: LessonTableCellViewModel) {
+    func update(model: LessonTableCellViewModel, showGroup: Bool = false) {
         indexLabel.text = "\(model.subjectIndex)"
         roomLabel.text = model.roomNumber
         titleLabel.text = model.subjectName
-        teacherLabel.text = model.teacherName
+        
+        if showGroup {
+            groupLabel.text = model.groupName
+        } else {
+            teacherLabel.text = model.teacherName
+        }
     }
 }
